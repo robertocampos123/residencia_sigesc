@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Tema{% endblock %}
+
+{% block body %}
+   
+
+    <div class="container w-50 bg-white rounded shadow my-4 p-3">
+
+         <h5 class="fw-bold text-center text-info py-2">Registrar Unidad Temática {{materia.getNombreMateria}}-{{materia.getClaveMateria}}</h5>
+        
+        {{form_start(form)}}
+        <div class="row">
+            <div class="col-md-6 my-2">
+                {{form_label(form.numero_unidad,'Número Unidad:')}}
+                {{form_widget(form.numero_unidad,{attr: {'placeholder':'EJ 1.'}})}}
+            </div>
+            <div class="col-md-6 my-2">
+                {{form_label(form.nombre_unidad,'Nombre Unidad: ')}}
+                {{form_widget(form.nombre_unidad,{attr: {'placeholder':'EJ. Fundamento Teóricos'}})}}
+            </div>
+            <div class="col-md-12 my-2">
+                {{form_label(form.subtemas,'Subtemas:')}}
+                {{form_widget(form.subtemas,{attr: {'placeholder':'EJ. 1.1 Conceptos Básicos.'}})}}
+            </div>
+           
+            
+        </div>
+
+        <div class="row">
+        <div class="col-md-12 my-2">
+                 {{ include('tema/_form.html.twig') }}
+        </div>   
+        </div>
+    </div>
+
+{% endblock %}

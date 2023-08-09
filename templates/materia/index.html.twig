@@ -1,0 +1,112 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Index Asignatura{% endblock %}
+
+{% block body %}
+    <style>
+
+    @import url(//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css);
+    @import url(https://fonts.googleapis.com/css?family=Titillium+Web:300);
+    .fa-2x {
+        font-size: 2em;
+    }
+    .fa {
+        position: relative;
+        display: table-cell;
+        width: 30px;
+        height: 18px;
+        text-align: center;
+        vertical-align: middle;
+        font-size:18px;
+        color: #F9F6EE;
+    }
+    .nav-text {
+        position:relative;
+        display:table-cell;
+        vertical-align:middle;
+        width:190px;
+        font-family: 'Titillium Web', sans-serif;
+    }
+    .nav-button {
+        position:relative;
+        display:table-cell;
+        vertical-align:middle;
+        font-family: 'Titillium Web', sans-serif;
+    }
+        
+</style>
+    <nav class="navbar navbar-expand-sm " style="background-color: #4682B4 ">
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+            <a class="nav-link text-white my-1 my-sm-0" href="{{ path('app_home_administrador') }}"><i class="fa fa-home fa-2x" ></i><span class="nav-button">Home</span></a>
+        </li>
+        </ul> 
+        <form class="form-inline mx-0 my-lg-0 mb-5">
+        <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+            <a class="nav-link text-white" ><i class="fa fa-user-circle fa-2x" ></i><span class="nav-text">{{user}}</span></a>
+        </li>
+        <li class="nav-item active">
+            <br>
+        </li>
+        </ul>
+        <a class="nav-link text-white my-1 my-sm-0" href="{{ path('app_logout') }}"><i class="fa fa-sign-out fa-2x" ></i><span class="nav-button">Cerrar Sesión</span></a>
+        </form>
+    </div>
+    </nav>        
+        <div class="bg-white container w-70  rounded shadow mt-4" >     
+                <h5 class="fw-bold text-center text-info py-2">Asignatura</h5>
+        <div class="row align-items-stretch">
+            <div class="col bg-white px-0">        
+            </div>
+            <div class=" d-flex flex-row-reverse py-2 px-4">
+            <a class="btn btn btn-info btn-sm" href="{{ path('app_materia_new') }}">+ Ingresar Materia</a>
+            </div>
+        </div>
+    <table class="table table-sm table-bordered table-hover" style="text-align:center">
+        <thead class="thead-light">
+            <tr>       
+                <th>Clave</th>
+                <th>Nombre</th>
+                <th>HT</th>
+                <th>HP</th>
+                <th>CR</th>
+                <th>Plan Académico</th>
+                <th>SEM</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for materium in pagination %}
+            <tr>
+                <td>{{ materium.clave_materia }}</td>
+                <td>{{ materium.nombre_materia }}</td>
+                <td>{{ materium.horas_teoricas }}</td>
+                <td>{{ materium.horas_practicas }}</td>
+                <td>{{ materium.creditos }}</td>
+                <td>{{ materium.plan_academico }}</td>
+                <td>{{ materium.semestre }}</td>
+                <td>
+                    <div class="d-flex flex-row justify-content-center">
+                    <a class="btn btn-info btn-sm" href="{{ path('app_materia_show', {'id': materium.id}) }}"><i class="fa fa-info-circle"></i></a>
+                    <a class="btn btn-success btn-sm" href="{{ path('app_materia_temario', {'id': materium.id}) }}"><i class="fa fa-book"></i></a>
+                    <a class="btn btn-primary btn-sm" href="{{ path('app_materia_edit', {'id': materium.id}) }}"><i class="fa fa-pencil-square-o"></i></a>
+                    <form method="post" action="{{ path('app_materia_delete', {'id': materium.id}) }}" onsubmit="return confirm('Confirmar Eliminación');">
+                    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ materium.id) }}">
+                     <button class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></button>
+                    </form>
+                  </div>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="8">No se han registrado materias</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <div class="navigation" style="display: flex; justify-content: center;">
+    {{ knp_pagination_render (pagination) }}
+    </div>
+{% endblock %}

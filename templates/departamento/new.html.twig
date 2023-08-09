@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Departamento{% endblock %}
+
+{% block body %}
+
+    <div class="container bg-white rounded shadow my-4 p-3">
+        
+        <h5 class="fw-bold text-center text-info py-2">Registrar Departamento</h5>
+        {{form_start(form)}}
+        <div class="row">
+            <div class="col-md-12 my-2">
+                {{form_label(form.clave_departamento,'Clave Departamento')}}
+                {{form_widget(form.clave_departamento,{attr: {'placeholder':'EJ. DECB'}})}}
+            </div>
+            <div class="col-md-12 my-2">
+                {{form_label(form.nombre_departamento,'Nombre del Departamento')}}
+                {{form_widget(form.nombre_departamento,{attr: {'placeholder':''}})}}
+            </div>
+        </div>
+
+        <div class="row">
+        <div class="col-md-6 my-2">
+                {{ include('departamento/_form.html.twig') }}
+        </div>
+        <div class="col-md-6 my-2">
+               <a class="btn btn-danger btn-sm btn-block" href="{{ path('app_departamento_index') }}">Regresar</a>
+        </div>    
+        </div>
+   
+{% endblock %}

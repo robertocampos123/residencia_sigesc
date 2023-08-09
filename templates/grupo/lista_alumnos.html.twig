@@ -1,0 +1,62 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Alumnos del Curso{% endblock %}
+
+{% block body %}
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+</style>
+
+    <div class="bg-white container w-70  rounded shadow mt-4 p-4"  >
+
+            <h5 class="fw-bold text-center text-info py-2">Alumnos {{grupo.getClaveGrupo}} - {{grupo.getMateria.getNombreMateria}}</h5>
+
+
+            <div class="bg-white container w-70  mt-2 p-4"  >
+        <table class="table table-sm table-bordered table-hover" style="text-align:center">
+            <thead class="thead-light" style="text-align:center;">
+                <tr>
+                    <th>NO.</th>
+                    <th>N. Control</th>
+                    <th>Nombre Completo</th>
+                    <th>Carrera</th>
+                    <th>Acción</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% set i = 0 %}
+            {% for alumno in alumnos %}
+                <tr>
+                    {% set i = i + 1 %}
+                    <td>{{i}}. </td>
+                    <td>{{ alumno.getNumeroControl }}</td>
+                    <td >{{ alumno.getApellidoPaterno }} {{ alumno.getApellidoMaterno }} {{ alumno.getNombreAlumno }} </td>
+                    <td style="text-align:center;">{{ alumno.getCarrera.getClaveCarrera }}</td>
+                    <td style="text-align:center;">
+                        <form method="get" action="{{ path('app_grupo_quit_alumno', {'id': grupo.id, 'alumnoid': alumno.getId }) }}" onsubmit="return confirm('Confirmar Eliminación');">
+                        <button class="btn btn-success btn-sm">Remover</button>  
+                    </td>
+                    
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="5">Sin Alumnos Inscritos!</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        </div>  
+            
+
+            <div class="row align-items-stretch p-4" >
+                <form action="/grupo/{{grupo.id}}/lista_alumnos/import" method="post" enctype="multipart/form-data" style="text-align:center">
+                <input type="file" name="file" required>
+                <input type="submit" class="btn btn-primary btn-sm" value="Cargar Datos">
+                </form>
+             </div>   
+    
+        
+    </div>
+
+{% endblock %}

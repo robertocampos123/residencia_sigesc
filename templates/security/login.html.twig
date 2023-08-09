@@ -1,0 +1,63 @@
+{% extends 'base_login.html.twig' %}
+
+{% block title %}Bienvenido: Sistema de Gestión de Curso{% endblock %}
+
+{% block body %}
+
+<div class="bg-white container w-70 mt-5 rounded shadow">
+<div class="row align-items-stretch">
+    <div class="col bg-white px-0">  
+        <img src="https://maryza.gnomio.com/pluginfile.php/2/course/section/1/logoTecNM.png" class="img-fluid" draggable="false">
+    </div>
+    <div class="col bg-white p-5 rounded">
+
+                   <h3 class="fw-bold text-center text-info py-2">Bienvenido</h3>
+                   <div class="my-1">
+                        <h5 style="color:#539DC2;" class="fw-bold text-center text-info">Sistema de Gestión del Curso ITCh</h5>
+                   </div>
+                <form method="post">
+                    {% if error %}
+                        <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+                    {% endif %}
+                    {% if app.user %}
+                        <div class="mb-3">
+                            Ya Ingresaste {{ app.user.userIdentifier }}, <a href="{{ path('app_logout') }}">Cerrar Sesión</a>
+                        </div>
+                    {% endif %}
+                   <div class="my-4">
+                    <label class="form-laber" for="inputEmail">Correo Electrónico:</label>
+                    <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" autocomplete="email" required autofocus>
+                   </div>
+                   <div class="my-4">
+                   <label for="inputPassword">Contraseña:</label>
+                    <input type="password" name="password" id="inputPassword" class="form-control" autocomplete="current-password" required>
+                   </div>
+                   <div class="my-4 form-check">
+                   <label class="form-check-label">
+                        <input type="checkbox" name="_remember_me" class="form-check-input"> Mantenerme Conectado
+                    </label>
+                   </div>
+                   <div class="mt-4 mb-1 d-flex justify-content-center">
+                    <button class="py-2 mx-6 btn btn-primary btn-sm btn-block" type="submit">Iniciar Sesión</button>
+                   </div>
+                    <input type="hidden" name="_csrf_token"
+                        value="{{ csrf_token('authenticate') }}"
+                    >
+                    {#
+                        Uncomment this section and add a remember_me option below your firewall to activate remember me functionality.
+                        See https://symfony.com/doc/current/security/remember_me.html
+
+                        <div class="checkbox mb-3">
+                            <label>
+                                <input type="checkbox" name="_remember_me"> Remember me
+                            </label>
+                        </div>
+                    #}
+                </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+ 
+ 

@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Gestión Usuarios{% endblock %}
+
+{% block body %}
+   <div class="container bg-white rounded shadow my-4 p-3">
+        
+        <h5 class="fw-bold text-center text-info py-2">Editar Usuario</h5>
+        {{form_start(form)}}
+        <div class="row">
+            <div class="col-md-6 my-2">
+                {{form_label(form.email,'Email:')}}
+                {{form_widget(form.email,{attr: {'placeholder':'@chilpancingo.tecnm.mx'}})}}
+            </div>
+            <div class="col-md-6 my-2">
+                {{form_label(form.password,'Contraseña:')}}
+                {{form_widget(form.password,{attr: {'placeholder':'******'}})}}
+            </div>
+            <div class="col-md-12 my-2">
+                {{form_label(form.Roles,'Rol:')}}
+                {{form_widget(form.Roles)}}
+            </div> 
+        </div>
+        <div class="row">
+            <div class="col-md-6 my-2">
+                    {{ include('usuario/_form.html.twig', {'button_label': 'Actualizar'}) }}
+            </div>
+            <div class="col-md-6 my-2">
+                <a class="btn btn-danger btn-sm btn-block" href="{{ path('app_usuario_index') }}">Regresar</a>
+            </div>    
+        </div>
+    </div>
+
+   
+   
+
+{% endblock %}

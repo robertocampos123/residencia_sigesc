@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Cargo{% endblock %}
+
+{% block body %}
+    <h1>Create new Cargo</h1>
+
+    {{ include('cargo/_form.html.twig') }}
+
+    <a href="{{ path('app_cargo_index') }}">back to list</a>
+{% endblock %}

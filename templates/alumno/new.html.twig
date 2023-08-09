@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Alumnos{% endblock %}
+
+{% block body %}
+
+    <div class="container bg-white rounded shadow my-4 p-4">
+        
+        <h5 class="fw-bold text-center text-info py-2">Registrar Alumno</h5>
+        {{form_start(form)}}
+        <div class="row">
+            <div class="col-md-12 my-2">
+                {{form_label(form.numero_control,'Número de Control')}}
+                {{form_widget(form.numero_control,{attr: {'placeholder':'EJ. 17520234'}})}}
+            </div>
+            <div class="col-md-12 my-2">
+                {{form_label(form.nombre_alumno,'Nombre del Alumno')}}
+                {{form_widget(form.nombre_alumno,{attr: {'placeholder':''}})}}
+            </div>
+            <div class="col-md-6 my-2">
+                {{form_label(form.apellido_paterno,'Apellido Paterno')}}
+                {{form_widget(form.apellido_paterno,{attr: {'placeholder':''}})}}
+            </div>
+            <div class="col-md-6 my-2">
+                {{form_label(form.apellido_materno,'Apellido Materno')}}
+                {{form_widget(form.apellido_materno,{attr: {'placeholder':''}})}}
+            </div>
+            <div class="col-md-12 my-2">
+                {{form_label(form.carrera,'Seleccione la Carrera')}}
+                {{form_widget(form.carrera)}}
+            </div>
+        </div>
+
+        <div class="row">
+        <div class="col-md-6 my-2">
+                {{ include('alumno/_form.html.twig') }}
+        </div>
+        <div class="col-md-6 my-2">
+               <a  class="btn btn-danger btn-sm btn-block"href="{{ path('app_alumno_index') }}">Regresar</a>
+        </div>    
+        </div>
+    </div>
+    
+
+   
+{% endblock %}

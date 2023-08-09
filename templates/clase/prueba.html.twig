@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<style>
+    .hd{
+    font: 14px Arial, sans-serif;
+    font-weight: bold;
+    text-align:center;
+    }
+    .unidad{
+    font: 13px Arial, sans-serif;
+    text-align:center;
+    }
+    .subtemas{
+    font: 12px Arial, sans-serif;
+    text-align:left;
+    }
+    .contenido{
+    font: 13px Arial, sans-serif;
+    text-align:center;
+    }
+    .observaciones{
+    font: 12px Arial, sans-serif;
+    text-align:center;
+    }
+    table.table2{
+    border: 1px solid black;
+    border-collapse: collapse;
+    }
+    table.table2 thead{
+    border: 1px solid black;
+    border-collapse: collapse;
+    }
+    table.table2 tr{
+    border: 1px solid black;
+    border-collapse: collapse;
+    }
+    table.table2 td{
+    border: 1px solid black;
+    border-collapse: collapse;
+    }
+    table.table2 th{
+    border: 1px solid black;
+    border-collapse: collapse;
+    }
+    table.table2 tfoot{
+    border: 1px solid black;
+    border-collapse: collapse;
+    }
+    table.table2 tbody{
+    border: 1px solid black;
+    border-collapse: collapse;
+    font: 14px Arial, sans-serif;
+    text-align:left;
+    white-space: pre-line;
+    }
+    p.a {
+    font: 12px Arial, sans-serif;
+    text-transform: uppercase;
+    }
+    p.b {
+    font: 14px Arial, sans-serif;
+    font-weight: bold;
+    text-align:center;
+    text-transform: uppercase;
+    }
+    p.c {
+    font: 12px Arial, sans-serif;
+    text-transform: uppercase;
+    }
+    p.enc1 {
+    font: 16px Arial, sans-serif;
+    font-weight: bold;
+    text-align:center;
+    }
+    p.enc2 {
+    font: 15px Arial, sans-serif;
+    text-align:center;
+    }
+    p.enc3 {
+    font: 12px Arial, sans-serif;
+    text-align:center;
+    }
+    p.enc4 {
+    font: 12px Arial, sans-serif;
+    font-weight: bold;
+    text-align:center;
+    }
+    .containerdiv{
+    margin: 0;
+    padding: 0;
+    border: 1px solid black;
+    }
+    .contenido{
+    font: 13px Arial, sans-serif;
+    text-align:center;
+    border-collapse: collapse;
+    }
+    .center {
+    display: block;
+    margin-left: 15%;
+    margin-right: auto;
+    }
+    .center-tecnm {
+    display: block;
+    margin-left: 15%;
+    margin-right: auto;
+    }
+</style>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <table style="width:100%" class="table2">
+        <tr>
+            <td rowspan="2"><img  class="center-tecnm" src="http://www.itssmo.edu.mx/descargas/azul_2011.png"  width="150" height="85"/></td>
+            <td colspan="2"><p class="enc1">Planeación del curso y avance programático</p></td>
+            <td rowspan="2"><img class="center" src="https://escogemicarrera.com/wp-content/uploads/2020/10/1-9.jpg?ezimgfmt=rs:371x247/rscb1/ngcb1/notWebP" width="130" height="90"/></td>
+        </tr>
+        <tr>
+            <td colspan="2"><p class="enc2" style="padding-bottom: 6px;margin-bottom: 6px;padding-top: 0px;margin-top: 0px;">Referencia a la Norma ISO 9001:2008  7.1, 7.2.1, 7.5.1, 7.6, 8.1, 8.2.</p></td>
+        </tr>
+        <tr >
+            <td><p class="enc3" style="margin: 0;padding: 0;">Revisión: 2</p></td>
+            <td><p class="enc4" style="margin: 0;padding: 0;">Código:ITCHILPO-AC-PO-004-01</p></td>
+            <td><p class="enc3" style="margin: 0;padding: 0;">Fecha de aplicación: 16-junio-2011</p></td>
+            <td><p class="enc3" style="margin: 0;padding: 0;">Página 1 de  3</p></td>
+        </tr>
+    </table> 
+</head>
+<body>
+    <p class="b" style="padding-top: 3px; padding-bottom: 0px;margin-bottom: 0px;">INSTITUTO TECNOLÓGICO DE CHILPANCINGO</p>
+    <p class="b" style="margin: 0;padding: 0;">SUBDIRECCIÓN ACADÉMICA</p>
+    <p class="b" style="margin: 0;padding: 0;">DEPARTAMENTO DE {{grupo.getDocente.getDepartamento.getNombreDepartamento}}</p>
+    <p class="b" style="padding-bottom: 4px;margin-bottom: 4px;padding-top: 4px;margin-top: 4px;">PLANEACION DEL CURSO Y AVANCE PROGRAMÁTICO DEL PERIODO {{ semestre.getNombrePeriodo }}</p>  
+    <table width="100%">
+        <tr>
+            <td><p class="c">MATERIA: <u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{grupo.getMateria.getNombreMateria}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p></td>
+            <td><p class="c">HT: <u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{grupo.getMateria.getHorasTeoricas}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p></td>
+            <td><p class="c">HP: <u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{grupo.getMateria.getHorasPracticas}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p></td>
+            <td><p class="c">CR: <u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{grupo.getMateria.getCreditos}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p></td>
+            <td><p class="c">No. DE UNIDADES: <u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{temas}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p></td>
+        </tr>
+    </table>   
+    <table width="100%" class="table2">
+            <tr ><p class="a" style="padding-top: 3px;padding-bottom: 3px;padding-left: 5px;padding-right: 5px;">OBJETIVO DE LA MATERIA: {{grupo.getMateria.getObjetivoMateria}}</p></tr>
+    </table>
+    <table width="100%">
+            <td><p class="c" style="padding-bottom: 0px;margin-bottom: 0px;">GRUPO: <u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{grupo.getClaveGrupo}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p></td>
+            <td><p class="c" style="padding-bottom: 0px;margin-bottom: 0px;">CARRERA: <u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{grupo.getCarrera.getNombreCarrera}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p></td>
+            <td><p class="c" style="padding-bottom: 0px;margin-bottom: 0px;">AULA: <u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{grupo.getAula}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p></td>
+            <td><p class="c" style="padding-bottom: 0px;margin-bottom: 0px;">HORARIO: <u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{grupo.getHorario}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p></td>
+    </table>
+    <table width="100%">
+            <td><p class="a">PROFESOR: 
+            <u>&nbsp;&nbsp;&nbsp;{{grupo.getDocente.getNombreEmpleado}}</u>
+            <u>{{grupo.getDocente.getApellidoPaterno}}</u>
+            <u>{{grupo.getDocente.getApellidoMaterno}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</u>
+            </p></td>
+    </table> 
+    <div>
+        <table class="table2">
+         <thead >
+            <th colspan="2" ></th>
+            <th colspan="2" class="hd">Fechas (Período)</th>
+            <th colspan="2" class="hd">Evaluación</th>
+            <th colspan="4"></th>
+        </thead>
+        <thead>
+            <th class="hd">Unidad Temática</th>
+            <th class="hd">Subtemas</th>
+            <th class="hd">&nbsp;Programado&nbsp;</th>
+            <th class="hd">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Real&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+            <th class="hd">&nbsp;Programado&nbsp;</th>
+            <th class="hd">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Real&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+            <th class="hd">Porcentaje de Aprobación</th>
+            <th class="hd">Firma del Docente</th>
+            <th class="hd">Firma del Jefe Académico</th>
+            <th class="hd">Observaciones</th>
+        </thead>
+       
+        <tbody>
+        {% for seguimiento in seguimientos %}
+            <tr>
+                <td class="unidad">{{ seguimiento.getTema.getNumeroUnidad}}.{{ seguimiento.getTema.getNombreUnidad}}</td>
+                <td class="subtemas">{{ seguimiento.getTema.getSubtemas }}</td>
+                <td class="contenido">{{ seguimiento.getFechaProgInicio ? seguimiento.getFechaProgInicio|date('d-m-Y') : '' }}
+                    {{ seguimiento.getFechaProgFin ? seguimiento.getFechaProgFin|date('d-m-Y') : '' }} </td>
+                <td class="contenido">&nbsp;{{ seguimiento.getFechaRealInicio ? seguimiento.getFechaRealInicio|date('d-m-Y') : '' }}&nbsp; 
+                    &nbsp;{{ seguimiento.getFechaRealFin ? seguimiento.getFechaRealFin|date('d-m-Y') : '' }} &nbsp;</td>
+                <td class="contenido">{{ seguimiento.getEvaluacionProgramada ? seguimiento.getEvaluacionProgramada|date('d-m-Y') : '' }}</td>
+                <td class="contenido">&nbsp;{{ seguimiento.getEvaluacionReal ? seguimiento.getEvaluacionReal|date('d-m-Y') : '' }}&nbsp;</td>
+                <td class="contenido">{{seguimiento.getPorcentajeAprobacion}}%</td>
+                 <td>
+                    {% if grupo.getDocente.getFirmaEmpleado %} 
+                        {% if seguimiento.getPorcentajeAprobacion >= 0 %} 
+                        <img  class="center-tecnm" src="{{ asset('uploads/firma/' ~ grupo.getDocente.getFirmaEmpleado) }}"  width="100" height="55"/>
+                        {% endif %}
+                    {% endif %} 
+                </td>
+                <td>
+                    {% if jefe_depto.getFirmaEmpleado %} 
+                    {% if seguimiento.getEstado == 'Aprobado' %} 
+                    <img  class="center-tecnm" src="{{ asset('uploads/firma/' ~ jefe_depto.getFirmaEmpleado) }}"  width="100" height="55"/>
+                    {% endif %}
+                    {% endif %}
+                </td>
+                <td class="observaciones">{{ seguimiento.getObservaciones }}</td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="10">Aún no ha realizado la captura de los seguimientos</td>
+            </tr>
+        {% endfor %}   
+        </tbody>
+        <tfoot>
+            <tr>
+                <td class="hd" colspan="2">Fecha de entrega de programación</td>
+                <td class="hd" colspan="6">Periodo Programado para 1er, 2do y 3er. Seguimiento</td>
+                <td class="hd" colspan="2">Periodo Programado de entrega de reporte final</td>
+            <tr>
+                <td class="contenido" colspan="2">{{ parc1.getInicio ? parc1.getInicio|date('d-m-Y') : '' }}</td>
+                <td class="contenido" colspan="2">{{ parc1.getFin ? parc1.getFin|date('d-m-Y') : '' }}</td>
+                <td class="contenido" colspan="2">{{ parc2.getFin ? parc2.getFin|date('d-m-Y') : '' }}</td>
+                <td class="contenido" colspan="2">{{ parc3.getFin ? parc3.getFin|date('d-m-Y') : '' }}</td>
+                <td class="contenido" colspan="2">{{ entrega.getFin ? entrega.getFin|date('d-m-Y') : '' }}</td>
+             </tr>
+             </tr>
+        </tfoot>
+        </table>   
+    </div>
+    <table style="width:100%; text-align:center;">
+        
+            <tr style="text-align:center; " >
+                <td><p class="hd" style=" padding-bottom: 4px;margin-bottom: 4px;padding-top: 4px;;">Vo.Bo. del Jefe de Departamento:</p> <p class="hd" style="padding-bottom: 4px;margin-bottom: 4px;padding-top: 4px;margin-top: 4px;">{{jefe_depto.getNombreEmpleado}} {{jefe_depto.getApellidoPaterno}} {{jefe_depto.getApellidoMaterno}}</p></td>
+            </tr>
+            <tr>
+                <td><img   src="{{ asset('uploads/firma/' ~ jefe_depto.getFirmaEmpleado) }}"  width="100" height="55"/></td>
+            </tr>
+    </table>  
+</body>
+</html>

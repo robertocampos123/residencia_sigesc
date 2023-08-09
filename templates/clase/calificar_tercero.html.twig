@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Evaluar Tercer Bloque{% endblock %}
+
+{% block body %}     
+    <div class="bg-white container w-70  rounded shadow mt-4" >
+        <h5 class="fw-bold text-center text-info py-2">Calificar Tercer Seguimiento</h5>
+        <table class="table table table-sm table-bordered table-hover">
+        <caption>Alumnos del Curso</caption>
+            <thead  class="thead-light" style="text-align:center">
+                <tr>
+                    <th>NO.</th>
+                    <th>N.C.</th>
+                    <th>Nombre</th>
+                    <th>Calificación</th>
+                </tr>
+            </thead>
+            <tbody>
+                <form action="/clase/{{grupo.id}}/tercer_avance/calificar" method="POST" enctype="multipart/form-data">
+                {% set i = 1 %}
+                {% for calificacion in calificaciones %}
+                    <tr>
+                        <td>{{i}} .</td>
+                        <td>{{ calificacion.getAlumno.getNumeroControl }}</td>
+                        <td>{{ calificacion.getAlumno.getApellidoPaterno }} {{ calificacion.getAlumno.getApellidoMaterno }} {{ calificacion.getAlumno.getNombreAlumno }}</td>
+                        <td> <input id="calificacion{{i}}" name="calificacion{{i}}" type="number" value="{{calificacion.getPeriodoTres}}" style="width: 100%;" min="0" max="100" required/></td>
+                    </tr>
+                    {% set i = i + 1 %}
+                {% else %}
+                    <tr>
+                        <td colspan="3">Sin registros</td>
+                    </tr>
+                {% endfor %}
+                <tfoot>
+                    <tr>
+                        <td colspan="3"></td>
+                        <td><input type="submit" class="btn btn-success btn-block" value="Guardar"></td>
+                    </tr>
+                </tfoot> 
+                </form>
+            </tbody>
+        </table>
+    </div>
+{% endblock %}

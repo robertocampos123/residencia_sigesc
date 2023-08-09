@@ -1,0 +1,174 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Clase{% endblock %}
+
+{% block body %}
+<style>
+    
+    @import url(//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css);
+    @import url(https://fonts.googleapis.com/css?family=Titillium+Web:300);
+
+    body{
+    background-image: url("https://img.freepik.com/premium-photo/modern-empty-school-classroom-interior-white-color-3d-rendering_295714-3593.jpg?w=2000");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+    }
+    .classcontent:hover {
+        box-shadow: 0 5px 15px grey;
+    }
+    .fa-2x {
+        font-size: 2em;
+    }
+    .fa {
+        position: relative;
+        display: table-cell;
+        width: 60px;
+        height: 36px;
+        text-align: center;
+        vertical-align: middle;
+        font-size:30px;
+        color: #F9F6EE;
+    }
+    .nav-text {
+        position:relative;
+        display:table-cell;
+        vertical-align:middle;
+        width:190px;
+        font-family: 'Titillium Web', sans-serif;
+        
+    }
+    .nav-button {
+        position:relative;
+        display:table-cell;
+        vertical-align:middle;
+        font-family: 'Titillium Web', sans-serif;
+    }
+</style>
+
+ <nav class="navbar navbar-expand-sm " style="background-color: #4682B4 ">
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link text-white my-1 my-sm-0" href="{{ path('app_grupos_docente') }}"><i class="fa fa-paper-plane-o fa-2x" ></i><span class="nav-button">Mis Grupos</span></a>
+            </li>
+        </ul>
+        <form class="form-inline mx-0 my-lg-0 mb-5">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link text-white" ><i class="fa fa-user-circle fa-2x" ></i><span class="nav-text">{{user}}</span></a>
+            </li>
+            <li class="nav-item active">
+                <br>
+            </li>
+        </ul>
+        <a class="nav-link text-white my-1 my-sm-0" href="{{ path('app_logout') }}"><i class="fa fa-sign-out fa-2x" ></i><span class="nav-button">Cerrar Sesión</span></a>
+        </form>
+    </div>
+  </nav>
+
+   
+
+   <div class="bg-transparent container w-80  rounded shadow mt-5">
+        <div class="row " >
+            <div class="classcontent col bg-white px-0" style="margin-right: 70px;">
+                <table class="table">
+                    <thead  class="table-info" style="text-align: center">
+                        <th colspan="2">{{grupo.materia}}</th>
+                    </thead>
+                    <tbody>
+                        <tr class="table-light">
+                            <td>Grupo: </td>
+                            <td>{{grupo.claveGrupo}}</td>
+                        </tr>
+                        <tr>
+                            <td>Clave: </td>
+                            <td>{{grupo.getMateria.getClaveMateria}}</td>
+                        </tr>
+                        <tr class="table-light">
+                            <td>Aula: </td>
+                            <td>{{grupo.getAula}}</td>
+                        </tr>
+                        <tr>
+                            <td>Horario: </td>
+                            <td>{{grupo.getHorario}}</td>
+                        </tr>
+                        <tr class="table-light">
+                            <td>Carrera: </td>
+                            <td>{{grupo.getCarrera.getNombreCarrera}}</td>
+                        </tr>
+                    </tbody>
+                    <thead class="table-info" >
+                        <th  colspan="2">Alumnos</th>
+                    </thead>
+                    <tr class="table-light">
+                            <td >Inscritos: </td>
+                            <td>{{grupo.getInscritos}}</td>
+                        </tr>
+                        <tr>
+                            <td>Ver Lista: </td>
+                            <td><a  href="{{ path('app_clase_alumnos', {'id': grupo.id}) }}"><img src="https://cdn-icons-png.flaticon.com/512/4207/4207247.png" style="width:62px;height:62px;"></a></td>
+                        </tr>
+                </table>          
+            </div>
+                <div class="classcontent col bg-white px-0 rounded">
+                    <table class="table">
+                        <thead class="table-primary">
+                            <tr>
+                            <th colspan="2" style="text-align: center">Documentos</th>
+                            <th >Ver</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Instrumentación Didáctica</td>
+                                <td><a class="btn btn-primary btn-sm" href="{{ path('app_clase_subir_instrumentacion_didactica', {'id': grupo.id}) }}">Capturar</a></td>
+                               <td>
+                                    {% if instrumentacion %}
+                                    <a href="{{ asset('uploads/instrumentacion/' ~ grupo.getInstrumentacionDidactica) }}"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/PDF_file_icon.svg/1667px-PDF_file_icon.svg.png" style="width:50px;height:63px;margin-top:auto;margin-bottom:auto;"></a>
+                                    {% endif %}
+                               </td>
+                            </tr>
+                            <tr>
+                                <td>Plan de Avance Programático</td>
+                                <td><a class="btn btn-primary btn-sm" href="{{ path('app_plan_avance', {'id': grupo.id}) }}">Capturar</a></td>
+                                <td><a href="{{ path('app_archivo_plan_avance', {'id': grupo.id}) }}"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/PDF_file_icon.svg/1667px-PDF_file_icon.svg.png" style="width:50px;height:63px;margin-top:auto;margin-bottom:auto;"></a></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table" style="text-align: center, margin-top:10px">
+                        <thead class="table-primary">
+                            <tr>
+                            <th colspan="3" style="text-align: center">Periodos</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Seguimiento 1:</td>
+                                <td><a  href="{{ path('app_primer_avance', {'id': grupo.id}) }}">Unidades Temáticas</a></td>
+                                <td><a  href="{{ path('app_calificar_primer_avance', {'id': grupo.id}) }}">Calif. Alumnos</a></td>
+                            </tr>
+                            <tr>
+                                <td>Seguimiento 2:</td>
+                                <td><a  href="{{ path('app_segundo_avance', {'id': grupo.id}) }}">Unidades Temáticas</a></td>
+                                <td><a  href="{{ path('app_calificar_segundo_avance', {'id': grupo.id}) }}">Calif. Alumnos</a></td>
+                            </tr>
+                            <tr>
+                                <td>Seguimiento 3:</td>
+                                <td><a  href="{{ path('app_tercer_avance', {'id': grupo.id}) }}">Unidades Temáticas</a></td>
+                                <td><a  href="{{ path('app_calificar_tercer_avance', {'id': grupo.id}) }}">Calif. Alumnos</a></td>
+                            </tr>
+                            <tr>
+                                <td>Final:</td>
+                                <td><a class="btn btn-info btn-sm" style="width:100%" href="{{ path('app_calificar_final', {'id': grupo.id}) }}">Reportar</a></td>
+                                <td></td>
+                            </tr>
+                        </tbody>
+                    </table>
+            </div> 
+        </div>
+    </div>
+
+
+{% endblock %}

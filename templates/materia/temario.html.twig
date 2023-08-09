@@ -1,0 +1,84 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Tema index{% endblock %}
+
+{% block body %}
+
+
+  <style>
+        @import url(//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css);
+        @import url(https://fonts.googleapis.com/css?family=Titillium+Web:300);
+        .fa-2x {
+            font-size: 2em;
+        }
+        .fa {
+            position: relative;
+            display: table-cell;
+            width: 30px;
+            height: 18px;
+            text-align: center;
+            vertical-align: middle;
+            font-size:18px;
+            color: #F9F6EE;
+        }
+        .nav-text {
+            position:relative;
+            display:table-cell;
+            vertical-align:middle;
+            width:190px;
+            font-family: 'Titillium Web', sans-serif;
+        }
+        .nav-button {
+            position:relative;
+            display:table-cell;
+            vertical-align:middle;
+            font-family: 'Titillium Web', sans-serif;
+        }
+    </style>
+        <nav class="navbar navbar-expand-sm " style="background-color: #4682B4 ">
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link text-white" href="{{ path('app_materia_index') }}">Regresar</a>
+            </li>
+            </ul>
+        </div>
+        </nav>
+        <div class="bg-white container w-70  rounded shadow mt-4 mb-2" >
+                <h5 class="fw-bold text-center text-info py-2">Unidades Temáticas de {{asignatura.nombreMateria}} {{asignatura.getClaveMateria}}</h5>
+        <div class="row align-items-stretch">
+            <div class="col bg-white px-0">
+            </div>
+            <div class=" d-flex flex-row-reverse py-2 px-4">
+            <a class="btn btn btn-info btn-sm" href="{{ path('app_tema_new', {'id': asignatura.getId}) }}">+ Ingresar Tema</a>
+            </div>
+        </div>
+    <table class="table table-striped table-sm table-bordered table-hover table-materia" style="text-align:justify">
+        <thead class="thead-light">
+         <caption></caption>
+            <tr>
+                <th>Unidad</th>
+                <th>Subtemas</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for tema in unidades %}
+            <tr>
+                <td>{{ tema.numeroUnidad }}. {{ tema.nombreUnidad }}</td>
+                <td style="white-space: pre-line;">{{ tema.subtemas }}</td>
+                <td style="text-align:center">
+                    <a class="btn btn-info btn-sm" href="{{ path('app_tema_edit', {'id': tema.id}) }}"><i class="fa fa-pencil-square-o"></i></a>
+                    <form method="post" action="{{ path('app_tema_delete', {'id': tema.id}) }}" onsubmit="return confirm('Confirmar Eliminación');">
+                    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ tema.id) }}">
+                     <button style ="margin-left: 7px;" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></button>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td style="text-align:center" colspan="3">Aún no se han registrado las unidades temáticas!</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<style>
+        .hd{
+        font: 14px Arial, sans-serif;
+        font-weight: bold;
+        text-align:center;
+        }
+
+        .unidad{
+        font: 13px Arial, sans-serif;
+        text-align:center;
+        }
+
+        .subtemas{
+        font: 12px Arial, sans-serif;
+        text-align:left;
+        }
+
+        .contenido{
+        font: 13px Arial, sans-serif;
+        text-align:center;
+        }
+
+        .observaciones{
+        font: 12px Arial, sans-serif;
+        text-align:center;
+        }
+        
+        table.table2{
+        border: 1px solid black;
+        border-collapse: collapse;
+        }
+
+        table.table2 thead{
+        border: 1px solid black;
+        border-collapse: collapse;
+        }
+
+        table.table2 tr{
+        border: 1px solid black;
+        border-collapse: collapse;
+        }
+
+        table.table2 td{
+        border: 1px solid black;
+        border-collapse: collapse;
+        }
+
+        table.table2 th{
+        border: 1px solid black;
+        border-collapse: collapse;
+        }
+
+        table.table2 tfoot{
+        border: 1px solid black;
+        border-collapse: collapse;
+        }
+
+        table.table2 tbody{
+        border: 1px solid black;
+        border-collapse: collapse;
+        font: 14px Arial, sans-serif;
+        text-align:left;
+        white-space: pre-line;
+        text-transform: uppercase;
+        }
+
+        p.con {
+        font: 14px Arial, sans-serif;
+        text-transform: uppercase;
+        }
+
+        p.a {
+        font: 13px Arial, sans-serif;
+        text-transform: uppercase;
+        }
+        p.b {
+        font: 15px Arial, sans-serif;
+        font-weight: bold;
+        text-align:center;
+        text-transform: uppercase;
+        }
+        p.firma {
+        font: 13px Arial, sans-serif;
+        font-weight: bold;
+        text-align:center;
+        text-transform: uppercase;
+        }
+        p.c {
+        font: 13px Arial, sans-serif;
+        
+        text-transform: uppercase;
+        }
+        p.d {
+        font: 11px Arial, sans-serif;
+        text-transform: uppercase;
+        }
+        p.e {
+        font: 10px Arial, sans-serif;
+        }
+        p.enc1 {
+        font: 16px Arial, sans-serif;
+        font-weight: bold;
+        text-align:center;
+        }
+        p.enc2 {
+        font: 15px Arial, sans-serif;
+        text-align:center;
+        }
+        p.enc3 {
+        font: 12px Arial, sans-serif;
+        text-align:center;
+        
+        }
+        p.enc4 {
+        font: 12px Arial, sans-serif;
+        font-weight: bold;
+        text-align:center;
+        
+        }
+        .containerdiv{
+            margin: 0;
+            padding: 0;
+            border: 1px solid black;
+        }
+        .contenido{
+            font: 13px Arial, sans-serif;
+            text-align:center;
+            border-collapse: collapse;
+        }
+        .center {
+        display: block;
+        margin-left: auto;
+        margin-right: 0px;
+        padding-right: 0px;
+        }
+        .center-tecnm {
+        display: block;
+        margin-left: 0px;
+        margin-right: 0px;
+        }
+        
+    </style>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% set i = 0 %}
+    {% for asignatura in materias_diferentes %}
+        {% set i = i + 1 %} 
+    {% endfor %}
+        <table style="width:100%" class="table2">
+            <tr>
+                <td rowspan="2"><img  class="center-tecnm" src="http://www.itssmo.edu.mx/descargas/azul_2011.png"  width="115" height="70"/></td>
+                <td colspan="2"><p class="enc1">Reporte Final del Semestre</p></td>
+                <td rowspan="2"><img class="center" src="https://escogemicarrera.com/wp-content/uploads/2020/10/1-9.jpg?ezimgfmt=rs:371x247/rscb1/ngcb1/notWebP" width="110" height="77"/></td>
+            </tr>
+            <tr>
+                <td colspan="2"><p class="enc2" style="padding-bottom: 6px;margin-bottom: 6px;padding-top: 0px;margin-top: 0px;">Referencia a la Norma ISO 9001:2008 7.1, 7.2.1, 7.5.1, 7.6, 8.1, 8.24</p></td>
+            </tr>
+            <tr >
+                <td><p class="enc3" style="margin: 0;padding: 0;">Revisión: 2</p></td>
+                <td><p class="enc4" style="margin: 0;padding: 0;">Código:ITCHILPO-AC-PO-004-02</p></td>
+                <td><p class="enc3" style="margin: 0;padding: 0;">Fecha de aplicación: 16-junio-2011</p></td>
+                <td><p class="enc3" style="margin: 0;padding: 0;">Página 1 de 2</p></td>
+            </tr>
+        </table>  
+    </head>
+<body>
+    <p class="b" style="padding-bottom: 0px;margin-bottom: 0px;padding-top: 7px;margin-top: 7px;">INSTITUTO TECNOLÓGICO DE CHILPANCINGO</p>
+    <p class="b" style="padding-bottom: 7px;margin-bottom: 7px;padding-top: 0px;margin-top: 0px;">SUBDIRECCIÓN ACADÉMICA</p>
+    <p class="c" style="margin: 0;padding: 0;">DEPARTAMENTO DE: {{empleado.getDepartamento.getNombreDepartamento}}</p>
+    <p class="a" style="margin: 0;padding: 0;">REPORTE FINAL DEL SEMESTRE: {{ semestre.getNombrePeriodo }} </p>
+    <p class="a" style="margin: 0;padding: 0;">PERIODO: {{ semestre.getNombrePeriodo }} </p>
+    <p class="a" style="padding-bottom: 4px;margin-bottom: 4px;padding-top: 4px;margin-top: 4px;">PROFESOR: 
+         <u>&nbsp;&nbsp;&nbsp;{{empleado.getNombreEmpleado}}&nbsp;</u><u>{{empleado.getApellidoPaterno}}&nbsp;</u><u>{{empleado.getApellidoMaterno}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</u>
+    </p>
+    <table style="width:100%">
+        <tr>
+            <td><p class="c" style="padding-bottom: 4px;margin-bottom: 4px;padding-top: 4px;margin-top: 4px;">No. DE GRUPOS ATENDIDOS: <u>&nbsp;&nbsp;&nbsp;&nbsp;{{no_grupos}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p></td>
+            <td><p class="c" style="padding-bottom: 4px;margin-bottom: 4px;padding-top: 4px;margin-top: 4px;">No. DE ASIGNATURAS DIFERENTES: <u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{i}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p></td>
+        </tr>
+    </table> 
+    <div>
+        <table style="width:100%" class="table2">
+         <thead style="background-color:#D3D3D3" >
+            <th rowspan="2" class="hd" style="padding-top: 10;padding-bottom: 7;">ASIGNATURA</th>
+            <th rowspan="2" class="hd" >CARRERA</th>
+            <th rowspan="2" class="hd" >A</th>
+            <th colspan="3" class="hd" >B</th>
+            <th rowspan="2" class="hd" >C</th>
+            <th rowspan="2" class="hd">D</th>
+            <th rowspan="2" class="hd">E</th>
+            <th rowspan="2" class="hd">F</th>
+            <th rowspan="2" class="hd">G</th>
+        </thead>
+        <thead style="background-color:#D3D3D3">
+            <th class="hd" style="padding-top: 10;padding-bottom: 7;">O</th>
+            <th class="hd">R</th>
+            <th class="hd">EX</th>
+        </thead>
+                {% set suma_alumnos = 0 %}
+                {% set suma_alumnos_acred = 0 %}
+                {% set suma_alumnos_no_acred = 0 %}
+                {% set suma_alumnos_acred_ord = 0 %}
+                {% set suma_alumnos_acred_reg = 0 %}
+                {% set suma_alumnos_acred_ext = 0 %}
+                {% set suma_alumnos_desertados = 0 %}
+                {% set suma_porc_aprob = 0 %}
+                {% set suma_porc_no_aprob = 0 %}
+                {% set suma_porc_des = 0 %}
+                {% set i = 0 %}
+        <tbody>
+                {% for grupo in grupos %}
+            <tr>
+                {% set inscritos = grupo.inscritos %}
+                {% set suma_acreditados = grupo.ac_ordinario + grupo.ac_regularizacion + grupo.ac_extraordinario %}
+                {% set porcentaje_aprob  = ((suma_acreditados * 100)/(inscritos)) %}
+                {% set porcentaje_repr  = ((grupo.no_acreditado * 100)/(inscritos)) %}
+                {% set porcentaje_des  = ((grupo.desertados * 100)/(inscritos)) %}
+                {% set i = i + 1 %}
+                <td style="padding-top: 7;padding-bottom: 7;padding-left: 3" >{{ grupo.nombre_materia }}</td>
+                <td style="text-align:center;">{{ grupo.nombre_carrera}}</td>
+                <td style="text-align:center;padding-left: 4;padding-right: 4;">{{ grupo.inscritos }}</td>
+                <td style="text-align:center;padding-left: 4;padding-right: 4;">{{ grupo.ac_ordinario}}</td>
+                <td style="text-align:center;padding-left: 4;padding-right: 4;">{{ grupo.ac_regularizacion}}</td>
+                <td style="text-align:center;padding-left: 4;padding-right: 4;">{{ grupo.ac_extraordinario}}</td>
+                <td style="text-align:center;padding-left: 4;padding-right: 4;">{{ (porcentaje_aprob)|number_format (2)}}%</td>
+                <td style="text-align:center;padding-left: 4;padding-right: 4;">{{ grupo.no_acreditado}}</td>
+                <td style="text-align:center;padding-left: 4;padding-right: 4;">{{ (porcentaje_repr)|number_format (2)}}%</td>
+                <td style="text-align:center;padding-left: 4;padding-right: 4;">{{ grupo.desertados }}</td>
+                <td style="text-align:center;padding-left: 4;padding-right: 4;">{{ (porcentaje_des)|number_format (2)}}%</td>
+                {% set suma_alumnos = grupo.inscritos + suma_alumnos %}
+                {% set suma_alumnos_acred = (grupo.ac_ordinario + grupo.ac_regularizacion + grupo.ac_extraordinario) + suma_alumnos_acred %}
+                {% set suma_alumnos_no_acred  = grupo.no_acreditado + suma_alumnos_no_acred %}
+                {% set suma_alumnos_acred_ord = grupo.ac_ordinario      + suma_alumnos_acred_ord %}
+                {% set suma_alumnos_acred_reg = grupo.ac_regularizacion + suma_alumnos_acred_reg %}
+                {% set suma_alumnos_acred_ext = grupo.ac_extraordinario + suma_alumnos_acred_ext %}
+                {% set suma_alumnos_desertados = grupo.desertados + suma_alumnos_desertados %}
+                {% set suma_porc_aprob = porcentaje_aprob + suma_porc_aprob %}
+                {% set suma_porc_no_aprob = porcentaje_repr + suma_porc_no_aprob %}
+                {% set suma_porc_des = porcentaje_des + suma_porc_des %}
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="9">Sin registros</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+        {% set porcentaje_final_aprob = ((suma_alumnos_acred * 100)/(suma_alumnos)) %}
+        {% set porcentaje_final_repr  = ((suma_alumnos_no_acred * 100)/(suma_alumnos)) %}
+        {% set porcentaje_final_des  = ((suma_alumnos_desertados * 100)/(suma_alumnos)) %}
+        {% set porcentaje_final_aprob_1 = (suma_porc_aprob   / i )%}
+        {% set porcentaje_final_repr_2  = (suma_porc_no_aprob / i )%}
+        {% set porcentaje_final_des_2  = (suma_porc_des / i )%}
+        <tfoot>
+            <tr style="background-color:#D3D3D3" class="hd">
+                <td  style="padding-top: 10;padding-bottom: 7;padding-left: 7;padding-right: 7;">TOTALES</td>
+                <td></td>
+                <td>{{suma_alumnos}}</td>
+                <td>{{suma_alumnos_acred_ord}}</td>
+                <td>{{suma_alumnos_acred_reg}}</td>
+                <td>{{suma_alumnos_acred_ext}}</td>
+                <td>{{ (porcentaje_final_aprob_1)|number_format (2)}}%</td>
+                <td>{{suma_alumnos_no_acred}}</td>
+                <td>{{ (porcentaje_final_repr_2)|number_format (2)}}%</td>
+                <td>{{ suma_alumnos_desertados }}</td>
+                <td>{{ (porcentaje_final_des_2)|number_format (2)}}%</td>       
+             </tr>
+        </tfoot>
+        </table>   
+    </div>
+    <table style="width:100%">
+        <tr>
+            <p class="d" style="padding-bottom: 0px;margin-bottom: 0px;padding-top: 4px;margin-top: 4px;">A = TOTAL DE ESIUDIANTES POR MATERIA </p>
+        </tr>
+        <tr>
+            <p class="d" style="padding-bottom: 0px;margin-bottom: 0px;padding-top: 0px;margin-top: 0px;">B = No. DE ESTUDIANTES ACREDITADOS (O= ORDINARIO, R= REGULARIZACIÓN, EX= EXTRAORDINARIO) </p>
+        </tr>
+        <tr>
+            <p class="d" style="padding-bottom: 0px;margin-bottom: 0px;padding-top: 0px;margin-top: 0px;">C = % DE ESTUDIANTES ACREDITADOS </p>
+        </tr>
+        <tr>
+             <p class="d" style="padding-bottom: 0px;margin-bottom: 0px;padding-top: 0px;margin-top: 0px;">D = No. DE ESTUDIANTES NO ACREDITADOS </p>
+        </tr>
+        <tr>
+            <p class="d" style="padding-bottom: 0px;margin-bottom: 0px;padding-top: 0px;margin-top: 0px;">E = % DE ESTUDIANTES NO ACREDITADOS </p>
+        </tr>
+        <tr>
+            <p class="d" style="padding-bottom: 0px;margin-bottom: 0px;padding-top: 0px;margin-top: 0px;">F = No. DE ESTUDIANTES QUE DESERTARON DURANTE EL SEMESTRE EN LA MATERIA </p>
+        </tr>
+        <tr>
+            <p class="d" style="padding-bottom: 0px;margin-bottom: 0px;padding-top: 0px;margin-top: 0px;">G = % DE ESTUDIANTES QUE DESERTARON EN LA MATERIA </p>
+        </tr>         
+    </table>
+     <table style="width:100%">
+        <tr>
+            <p class="e" style="padding-bottom: 0px;margin-bottom: 0px;padding-top: 4px;margin-top: 4px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;NOTAS</p>
+        </tr>
+        <tr>
+            <p class="e" style="padding-bottom: 0px;margin-bottom: 0px;padding-top: 4px;margin-top: 4px;">1. Los estudiantes que se incluirán en la columna D son todos los estudiantes no acreditados incluyendo los desertores. </p>
+        </tr>
+        <tr>
+             <p class="e" style="padding-bottom: 0px;margin-bottom: 0px;padding-top: 0px;margin-top: 0px;">a. Este registro deberá de acompañarse con sus respectivos instrumentos de evaluación y  listas de calificaciones que avalen los datos aquí presentados.</p>
+        </tr>
+        <tr>
+            <p class="e" style="padding-bottom: 0px;margin-bottom: 0px;padding-top: 0px;margin-top: 0px;">2. Entendiendo como estudiante desertor al que toma la decisión de no presentar exámenes de regularización o extraordinarios aun teniendo derecho a ellos. </p>
+        </tr>    
+    </table>
+    <table style="width:100%; text-align:center;">
+        
+            <tr style="text-align:center; padding-left: 4;padding-right: 4;" >
+                <td><p class="firma" style=" padding-bottom: 4px;margin-bottom: 4px;padding-top: 4px;;">DOCENTE</p></td>
+                <td><p class="firma" style=" padding-bottom: 4px;margin-bottom: 4px;padding-top: 4px;">JEFE DEL ÁREA ACADÉMICA</p></td>
+            </tr>
+            <tr>
+                <td><p class="c" style="padding-bottom: 4px;margin-bottom: 4px;padding-top: 4px;margin-top: 4px;"></td>
+                <td><p class="c" style="padding-bottom: 4px;margin-bottom: 4px;padding-top: 4px;margin-top: 4px;"></td>
+            </tr>
+            <tr>
+                <td><p class="firma" style="padding-bottom: 4px;margin-bottom: 4px;padding-top: 4px;margin-top: 4px;">{{empleado.getNombreEmpleado}} {{empleado.getApellidoPaterno}} {{empleado.getApellidoMaterno}}</p></td>
+                <td><p class="firma" style="padding-bottom: 4px;margin-bottom: 4px;padding-top: 4px;margin-top: 4px;">{{jefe_depto.getNombreEmpleado}} {{jefe_depto.getApellidoPaterno}} {{jefe_depto.getApellidoMaterno}}</p></td>
+            </tr>
+    </table> 
+</body>
+</html>

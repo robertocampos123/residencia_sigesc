@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Cargo{% endblock %}
+
+{% block body %}
+    <h1>Edit Cargo</h1>
+
+    {{ include('cargo/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('app_cargo_index') }}">back to list</a>
+
+    {{ include('cargo/_delete_form.html.twig') }}
+{% endblock %}

@@ -1,0 +1,41 @@
+{% extends 'base_dashboard_jefe_academico.html.twig' %}
+
+{% block title %}Seguimientos{% endblock %}
+
+{% block main %}
+<div class="bg-transparent container w-70% mt-5  d-flex flex-row justify-content-center">
+        <div class="card" style="width: 25%; display: inline-block; margin:2%;">
+              <img class="card-img-top" src="{{ imagen[0] }}"  style="width:100px;height:100px;display: block;margin-left: auto;margin-right: auto;margin-top:10px;"> 
+              <div class="card-body">
+                <ul class="list-group" style=" text-align: center;">
+                  <li class="list-group-item list-group-item-info">{{seg1.getNombrePeriodo}}</li>
+                  <li class="list-group-item">Inicio: {{ seg1.inicio ? seg1.inicio|date('d-m-Y') : '' }}</li>
+                  <li class="list-group-item">Cierre: {{ seg1.fin ? seg1.fin|date('d-m-Y') : '' }}</li>
+                  <a class="btn btn-success btn-sm" href="{{ path('app_seguimientos_1') }}">Explorar</a>
+                </ul>
+              </div>
+        </div>
+        <div class="card" style="width: 25%; display: inline-block; margin:2%;">
+              <img class="card-img-top" src="{{ imagen[1] }}"  style="width:100px;height:100px;display: block;margin-left: auto;margin-right: auto;margin-top:10px;"> 
+              <div class="card-body">
+                <ul class="list-group" style=" text-align: center;">
+                  <li class="list-group-item list-group-item-info">{{seg2.getNombrePeriodo}}</li>
+                  <li class="list-group-item">Inicio: {{ seg2.inicio ? seg2.inicio|date('d-m-Y') : '' }}</li>
+                  <li class="list-group-item">Cierre: {{ seg2.fin ? seg2.fin|date('d-m-Y') : '' }}</li>
+                  <a class="btn btn-success btn-sm" href="{{ path('app_seguimientos_2') }}">Explorar</a>
+                </ul>
+              </div>
+        </div>
+        <div class="card" style="width: 25%; display: inline-block; margin:2%;">
+              <img class="card-img-top" src="{{ imagen[2] }}"  style="width:100px;height:100px;display: block;margin-left: auto;margin-right: auto;margin-top:10px;"> 
+              <div class="card-body">
+                <ul class="list-group" style=" text-align: center;">
+                  <li class="list-group-item list-group-item-info">{{seg3.getNombrePeriodo}}</li>
+                  <li class="list-group-item">Inicio: {{ seg3.inicio ? seg3.inicio|date('d-m-Y') : '' }}</li>
+                  <li class="list-group-item">Cierre: {{ seg3.fin ? seg3.fin|date('d-m-Y') : '' }}</li>
+                  <a class="btn btn-success btn-sm" href="{{ path('app_seguimientos_3') }}">Explorar</a>
+                </ul>
+              </div>
+        </div>
+</div>
+{% endblock %}

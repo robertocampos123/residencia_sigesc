@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Carga Masiva Grupos{% endblock %}
+
+{% block body %}
+    <style>
+        .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+        .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+    </style>
+
+<div class="bg-white container w-70  rounded shadow mt-4" >
+    <h5 class="fw-bold text-center text-info py-2">Ingresar Lista de Grupos Vigentes</h5>
+      <br>
+      <br>
+        <div>
+            <form action="/carga/grupo/archivoimport" method="post" enctype="multipart/form-data">
+                <input type="file" name="file_grupo"  accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel" required>
+                <input type="submit" class="btn btn-primary btn-sm" value="Cargar Datos">
+            </form>
+        </div>
+       <br>
+       <br>    
+</div>
+{% endblock %}

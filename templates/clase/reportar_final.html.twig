@@ -1,0 +1,98 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Reporte Final de Grupo{% endblock %}
+
+{% block body %}
+<style>
+
+    @import url(//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css); 
+    @import url(https://fonts.googleapis.com/css?family=Titillium+Web:300);
+    .fa-2x {
+        font-size: 2em;
+    }
+    .fa {
+        position: relative;
+        display: table-cell;
+        width: 60px;
+        height: 36px;
+        text-align: center;
+        vertical-align: middle;
+        font-size:30px;
+        color: #F9F6EE;
+    }
+    .nav-text {
+        position:relative;
+        display:table-cell;
+        vertical-align:middle;
+        width:190px;
+        font-family: 'Titillium Web', sans-serif; 
+    }
+    .nav-button {
+        position:relative;
+        display:table-cell;
+        vertical-align:middle;
+        font-family: 'Titillium Web', sans-serif;
+    }
+</style>
+    <nav class="navbar navbar-expand-sm " style="background-color: #4682B4 ">
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link text-white my-1 my-sm-0" href="{{ path('app_clase', {'id': grupo.getId}) }}"><span class="nav-button">Regresar</span></a>
+                </li>
+            </ul>
+            <form class="form-inline mx-0 my-lg-0 mb-5">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link text-white" ><i class="fa fa-user-circle fa-2x" ></i><span class="nav-text">{{user}}</span></a>
+                </li>
+                <li class="nav-item active">
+                    <br>
+                </li>
+            </ul>
+            <a class="nav-link text-white my-1 my-sm-0" href="{{ path('app_logout') }}"><i class="fa fa-sign-out fa-2x" ></i><span class="nav-button">Cerrar Sesión</span></a>
+            </form>
+        </div>
+    </nav>
+
+    <div class="bg-white container w-70  rounded shadow mt-4" >
+            <h5 class="fw-bold text-center text-info py-2">Resumen Final del Curso</h5>
+            <table class="table" style="text-align:center">
+                <thead>
+                 <tr>
+                    <th colspan="5">Alumnos Acreditados</th>
+                </tr>
+                <tr>
+                    <th>Alumnos Inscritos</th>
+                    <th >Ordinario</th>
+                    <th >Regular</th>
+                    <th >Extraordinario</th>
+                </tr>
+                </thead>
+                <tbody>
+                <form action="/clase/{{grupo.id}}/final/calificar" method="POST" enctype="multipart/form-data">
+                    <tr>
+                        <td> {{grupo.getInscritos}}</td>
+                        <td> <input id="a" name="a" type="number" value="{{reporte.getAcOrdinario}}" min="0" max="{{grupo.getInscritos}}" required placeholder="Ordinario"/></td>
+                        <td> <input id="b" name="b" type="number" value="{{reporte.getAcRegularizacion}}" min="0" max="{{grupo.getInscritos}}" required placeholder="Regular"/></td>
+                        <td> <input id="c" name="c" type="number" value="{{reporte.getAcExtraordinario}}" min="0" max="{{grupo.getInscritos}}" required placeholder="Extraordinario"/></td>
+                    </tr>
+                <thead>
+                <tr>
+                    <th>Alumnos NO Acreditados</th>
+                    <th>Desertados</th>
+                    <th></th>
+                </tr>
+                </thead>
+                    <tr>
+                        <td> <input id="d" name="d" type="number" value="{{reporte.getNoAcreditado}}" min="0" max="{{grupo.getInscritos}}" required/></td>
+                        <td><input  id="d" name="e" type="number" value="{{reporte.getDesertados}}" min="0" max="{{grupo.getInscritos}}" required/></td>
+                        <td></td>
+                        <td><input type="submit" class="btn btn-success" value="Almacenar"></td>
+                    </tr>
+                </form>
+                </tbody>
+            </table>
+    </div>
+
+{% endblock %}

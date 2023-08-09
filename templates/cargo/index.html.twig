@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Cargo index{% endblock %}
+
+{% block body %}
+    <h1>Cargo index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Clave_cargo</th>
+                <th>Nombre_cargo</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for cargo in cargos %}
+            <tr>
+                <td>{{ cargo.id }}</td>
+                <td>{{ cargo.claveCargo }}</td>
+                <td>{{ cargo.nombreCargo }}</td>
+                <td>
+                    <a href="{{ path('app_cargo_show', {'id': cargo.id}) }}">show</a>
+                    <a href="{{ path('app_cargo_edit', {'id': cargo.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_cargo_new') }}">Create new</a>
+{% endblock %}

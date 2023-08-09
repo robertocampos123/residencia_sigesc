@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Eventos{% endblock %}
+
+{% block body %}
+
+    <div class="container bg-white rounded shadow my-4 p-3">
+        
+        <h5 class="fw-bold text-center text-info py-2">Editar Evento</h5>
+        {{form_start(form)}}
+        <div class="row">
+            <div class="col-md-6 my-2">
+                {{form_label(form.clave_periodo,'Clave Evento: ')}}
+                {{form_widget(form.clave_periodo,{attr: {'placeholder':'EJ. SEM2023'}})}}
+            </div>
+            <div class="col-md-6 my-2">
+                {{form_label(form.nombre_periodo,'Nombre del Evento')}}
+                {{form_widget(form.nombre_periodo,{attr: {'placeholder':'EJ. Semestre Enero-Junio 2023'}})}}
+            </div>
+            <div class="col-md-6 my-2">
+                {{form_label(form.inicio,'Fecha de Inicio: ')}}
+                {{form_widget(form.inicio)}}
+            </div>
+            <div class="col-md-6 my-2">
+                {{form_label(form.fin,'Fecha de Cierre:')}}
+                {{form_widget(form.fin)}}
+            </div>
+        </div>
+
+        <div class="row">
+        <div class="col-md-6 my-2">
+                {{ include('periodo/_form.html.twig', {'button_label': 'Actualizar'}) }}
+        </div>
+        <div class="col-md-6 my-2">
+               <a class="btn btn-danger btn-sm btn-block"href="{{ path('app_periodo_index') }}">Regresar</a>
+        </div>    
+        </div>
+    </div>
+{% endblock %}

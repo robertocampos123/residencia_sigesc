@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block body %} 
+
+<style>
+
+    @import url(//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css); 
+    @import url(https://fonts.googleapis.com/css?family=Titillium+Web:300);
+    .fa-2x {
+        font-size: 2em;
+    }
+    .fa {
+        position: relative;
+        display: table-cell;
+        width: 60px;
+        height: 36px;
+        text-align: center;
+        vertical-align: middle;
+        font-size:30px;
+        color: #F9F6EE;
+    }
+    .nav-text {
+        position:relative;
+        display:table-cell;
+        vertical-align:middle;
+        width:190px;
+        font-family: 'Titillium Web', sans-serif;
+    }
+    .nav-button {
+        position:relative;
+        display:table-cell;
+        vertical-align:middle;
+        font-family: 'Titillium Web', sans-serif;
+    }
+</style>
+
+    <div class="bg-white container w-60% mt-5 justify-content-center">
+    <h6 class="fw-bold text-center text-info py-2">Estadísticas 3er Seguimiento {{grupo.getClaveGrupo}}-{{grupo.getMateria.getNombreMateria}}</h6>
+                {{ render_chart(chart) }}
+    </div>
+{% endblock %}

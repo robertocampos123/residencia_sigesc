@@ -1,0 +1,101 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Generar Archivo de Avance Programático{% endblock %}
+
+{% block body %}
+<style>
+        @import url(//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css);
+        @import url(https://fonts.googleapis.com/css?family=Titillium+Web:300);
+    .fa-2x {
+        font-size: 2em;
+    }
+    .fa {
+        position: relative;
+        display: table-cell;
+        width: 60px;
+        height: 36px;
+        text-align: center;
+        vertical-align: middle;
+        font-size:30px;
+        color: #F9F6EE;
+    }
+    .nav-text {
+        position:relative;
+        display:table-cell;
+        vertical-align:middle;
+        width:190px;
+        font-family: 'Titillium Web', sans-serif;
+    }
+    .nav-button {
+        position:relative;
+        display:table-cell;
+        vertical-align:middle;
+        font-family: 'Titillium Web', sans-serif;
+    }     
+</style>
+    <nav class="navbar navbar-expand-sm " style="background-color: #4682B4 ">
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link text-white my-1 my-sm-0" href="{{ path('app_clase', {'id': grupo.getId}) }}"><span class="nav-button">Regresar</span></a>
+                </li>
+            </ul>
+            <form class="form-inline mx-0 my-lg-0 mb-5">
+                <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link text-white" ><i class="fa fa-user-circle fa-2x" ></i><span class="nav-text">{{user}}</span></a>
+                </li>
+                <li class="nav-item active">
+                    <br>
+                </li>
+                </ul>
+                <a class="nav-link text-white my-1 my-sm-0" href="{{ path('app_logout') }}"><i class="fa fa-sign-out fa-2x" ></i><span class="nav-button">Cerrar Sesión</span></a>
+            </form>
+        </div>
+    </nav>
+
+    <div class="bg-white container w-70  rounded shadow mt-4" >
+            <h5 class="fw-bold text-center text-info py-2">Capturar Planeación del Curso</h5>
+            <h5 class="fw-bold text-center text-info py-2">ITCHILPO-AC-PO003</h5>
+                <table class="table" style="text-align:center">
+                <thead>
+                <tr>
+                    <th>NO.</th>
+                    <th>Unidad</th>
+                    <th colspan="2">Período Programado</th>
+                    <th>Evaluación Programada</th>
+                </tr>
+                </thead>
+                <tbody>
+                <form action="/clase/{{grupo.id}}/plan/avance" method="POST" enctype="multipart/form-data">
+                    {% for tema in temas %}
+                        <tr>
+                            <td>{{ tema.getNumeroUnidad }}</td>
+                            <td>{{ tema.getNombreUnidad }}</td>
+                            <td><label for="programado_inicio{{tema.getNumeroUnidad}}">Fecha Inicio:</label> <input type="date" id="programado_inicio{{tema.getNumeroUnidad}}" name="programado_inicio{{tema.getNumeroUnidad}}" required></td>
+                            <td><label for="programado_cierre{{tema.getNumeroUnidad}}">Fecha Cierre:</label><input type="date" id="programado_cierre{{tema.getNumeroUnidad}}" name="programado_cierre{{tema.getNumeroUnidad}}" required></td>
+                            <td><label for="programado_eval{{tema.getNumeroUnidad}}">Evaluación:</label><input type="date" id="programado_eval{{tema.getNumeroUnidad}}" name="programado_eval{{tema.getNumeroUnidad}}" required></td>
+                        </tr>
+                    {% else %}
+                        <tr>
+                            <td colspan="4">No se han cargado las Unidades de la Materia</td>
+                        </tr>
+                    {% endfor %}
+                    <tfoot>
+                        <tr>
+                            <td colspan="4"></td>
+                            <td>
+                            {% if existen|length == 0 %}
+                            <input class="btn btn-success btn-block" type="submit" value="Generar" >
+                            {% elseif existen|length > 0 %}
+                            <p>Usted ya realizó la captura de seguimientos</p>
+                            {% endif %}
+                            </td>
+                        </tr>
+                        </form>
+                    </tfoot> 
+                </tbody>
+         </table>  
+    </div>
+
+{% endblock %}

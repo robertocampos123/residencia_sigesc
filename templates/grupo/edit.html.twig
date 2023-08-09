@@ -1,0 +1,59 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Grupo de Clase{% endblock %}
+
+{% block body %}
+
+    <div class="container bg-white rounded shadow my-4 p-3">
+        
+        <h5 class="fw-bold text-center text-info py-2">Editar Grupo</h5>
+        {{form_start(form)}}
+        <div class="row">
+            <div class="col-md-6 my-2">
+                {{form_label(form.clave_grupo,'Clave del Grupo')}}
+                {{form_widget(form.clave_grupo,{attr: {'placeholder':'EJ. S2A'}})}}
+            </div>
+            <div class="col-md-6 my-2">
+                {{form_label(form.cupo,'Cupo:')}}
+                {{form_widget(form.cupo,{attr: {'placeholder':'EJ. 50'}})}}
+            </div>
+            <div class="col-md-6 my-2">
+                {{form_label(form.inscritos,'Estudiantes Inscritos')}}
+                {{form_widget(form.inscritos,{attr: {'placeholder':'EJ. 41'}})}}
+            </div>
+            <div class="col-md-6 my-2">
+                {{form_label(form.aula,'Aula')}}
+                {{form_widget(form.aula,{attr: {'placeholder':'EJ. R1-1'}})}}
+            </div>
+            <div class="col-md-12 my-2">
+                {{form_label(form.horario,'Horario')}}
+                {{form_widget(form.horario,{attr: {'placeholder':'EJ. Lu 7a8|Ma 7a8|Mi 7a8|Ju 7a8|Vi 7a8'}})}}
+            </div>
+            <div class="col-md-12 my-2">
+                {{form_label(form.docente,'Seleccione el Docente')}}
+                {{form_widget(form.docente)}}
+            </div>
+            <div class="col-md-12 my-2">
+                {{form_label(form.materia,'Seleccione la Materia')}}
+                {{form_widget(form.materia)}}
+            </div>
+            <div class="col-md-12 my-2">
+                {{form_label(form.carrera,'Seleccione la Carrera')}}
+                {{form_widget(form.carrera)}}
+            </div>
+            
+        </div>
+
+        <div class="row">
+        <div class="col-md-6 my-2">
+                {{ include('grupo/_form.html.twig', {'button_label': 'Actualizar'}) }}
+        </div>
+        <div class="col-md-6 my-2">
+               <a class="btn btn-danger btn-sm btn-block" href="{{ path('app_grupo_index') }}">Regresar</a>
+        </div>    
+        </div>
+    </div>
+    
+
+   
+{% endblock %}

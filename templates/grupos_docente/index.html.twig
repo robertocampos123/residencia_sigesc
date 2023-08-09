@@ -1,0 +1,26 @@
+{% extends 'base_dashboard_docente.html.twig' %}
+
+{% block title %}Mis Grupos{% endblock %}
+
+{% block main %}
+<div class="bg-transparent container w-70% mt-5  d-flex flex-row justify-content-center">
+      {% for grupo in pagination %}
+        <div class="card" style="width: 25%; display: inline-block; margin:2%;">
+              <img class="card-img-top" src="{{ random(imagen) }}"  style="width:100px;height:100px;display: block;margin-left: auto;margin-right: auto;margin-top:10px;"> 
+              <div class="card-body">
+                <ul class="list-group" style=" text-align: center;">
+                  <li class="list-group-item list-group-item-info">{{ grupo.nombre_mat}}</li>
+                  <li class="list-group-item">{{ grupo.carrera}}</li>
+                  <li class="list-group-item">Grupo: {{ grupo.clave_grupo}} Aula: {{ grupo.aula}}</li>
+                  <li class="list-group-item">Alumnos: {{ grupo.inscritos}}</li>
+                  <a class="btn btn-success btn-sm" href="{{ path('app_clase', {'id': grupo.id}) }}">Detalles</a>
+                </ul>
+              </div>
+        </div>
+      {% else %} 
+      {% endfor %}    
+</div>
+<div class="navigation" style="display: flex; justify-content: center;">
+      {{ knp_pagination_render (pagination) }}
+</div>
+{% endblock %}

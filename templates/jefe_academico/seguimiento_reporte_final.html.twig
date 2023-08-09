@@ -1,0 +1,54 @@
+{% extends 'base_dashboard_jefe_academico.html.twig' %}
+
+{% block title %}Reporte Final{% endblock %}
+
+
+{% block main %}
+
+<div class="bg-white container w-70  rounded shadow mt-4 p-4" >
+    <h5 class="fw-bold text-center text-black py-2">Reporte Final del Departamento de {{departamento}} {{semestre}}</h5>
+    <div class="row align-items-stretch">
+        <div class="col bg-white px-0">     
+    </div>
+    <div class=" d-flex flex-row-reverse py-2 px-4">
+    </div>
+    <table class="table table-sm table-bordered table-hover"  style="text-align: center">
+        <thead class="thead-light">
+             <tr>
+                <th >No. </th>
+                <th >Docente</th>
+                <th >Archivo</th>
+                <th >Estado</th>
+                <th> Valoración</th>
+            </tr>
+        </thead>
+        <tbody>
+    {% set i = 0%}
+      {% for reporte in pagination %}
+        {% set i = i + 1%}
+            <tr>
+                <td>{{ i }}.</td>
+                <td>{{ reporte.apellido_paterno }} {{ reporte.apellido_materno }} {{ reporte.nombre_empleado }}</td>
+                <td style="text-align: center; "><a href="{{ asset('uploads/reporte_final/' ~ reporte.reporte_final) }}"><i class="fa fa-stack fa-file-pdf-o fa-lg" style="color: red;"></i><span class="nav-text">Mostrar</span></a></td>
+                <td>{{reporte.estado}}</td>
+                <td>
+                    <form action="/reporte_final/{{reporte.id}}/calificar" method="POST" enctype="multipart/form-data">
+                    <input style="margin:0;" type="radio" id="aprobado" name="estado" value="Favorable" required>
+                    <label style="margin:0;" for="aprobado">Favorable</label><br><br>
+                    <input  class="btn btn-success btn-sm" type="submit"  value="Evaluar">
+                    </form>
+                </td>
+            </tr>
+      {% else %} 
+             <tr>
+                <td colspan="3">Sin registros</td>
+            </tr>
+      {% endfor %}
+      <caption>No. de Reportes: {{i}}</caption>
+        </tbody>
+    </table>
+</div>
+    <div class="navigation" style="display: flex; justify-content: center;">
+        {{ knp_pagination_render (pagination) }}
+    </div>
+{% endblock %}

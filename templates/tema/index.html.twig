@@ -1,0 +1,75 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Tema index{% endblock %}
+
+{% block body %}
+
+
+<style>
+
+    .table-materia{
+  font-size: 14px;
+}
+
+</style>
+
+            <nav class="navbar navbar-expand-sm " style="background-color: #4682B4 ">
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link text-white" href="{{ path('app_materia_index') }}">Regresar</a>
+            </li>
+            </ul>
+        </div>
+        </nav>
+
+            
+        <div class="bg-white container w-70  rounded shadow mt-4" >
+            
+                <h5 class="fw-bold text-center text-info py-2">Gestión de Temas</h5>
+
+
+        <div class="row align-items-stretch">
+
+            <div class="col bg-white px-0">
+                
+            </div>
+
+            <div class=" d-flex flex-row-reverse py-2 px-4">
+
+            <a class="btn btn btn-info btn-sm" href="{{ path('app_tema_new') }}">+ Ingresar Tema</a>
+
+            </div>
+        </div>
+
+    <table class="table table-sm table-bordered table-hover table-materia">
+        <thead class="thead-light">
+            <tr>
+
+                <th>Unidad</th>
+                <th>Subtemas</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for tema in temas %}
+            <tr>
+                <td>{{ tema.numeroUnidad }}. {{ tema.nombreUnidad }}</td>
+                <td style="white-space: pre-line;">{{ tema.subtemas }}</td>
+                <td align="center" >
+                    <a  href="{{ path('app_tema_edit', {'id': tema.id}) }}">Editar</a>
+                    <form method="post" action="{{ path('app_tema_delete', {'id': tema.id}) }}" onsubmit="return confirm('Confirmar Eliminación');">
+                    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ tema.id) }}">
+                     <button class="btn  btn-sm">Eliminar</button>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}

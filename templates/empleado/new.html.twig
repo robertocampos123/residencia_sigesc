@@ -1,0 +1,55 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Empleado{% endblock %}
+
+{% block body %}
+    <div class="container bg-white rounded shadow my-4 p-3">
+        
+        <h5 class="fw-bold text-center text-info py-2">Registrar Empleado</h5>
+        {{form_start(form)}}
+        <div class="row">
+            <div class="col-md-12 my-2">
+                    {{form_label(form.RFC,'RFC :')}}
+                    {{form_widget(form.RFC,{attr: {'placeholder':''}})}}
+            </div>
+            <div class="col-md-12 my-2">
+                    {{form_label(form.nombre_empleado,'Nombre:')}}
+                    {{form_widget(form.nombre_empleado,{attr: {'placeholder':''}})}}
+            </div>  
+            <div class="col-md-6 my-2">
+                    {{form_label(form.apellido_paterno,'Apellido Paterno: :')}}
+                    {{form_widget(form.apellido_paterno,{attr: {'placeholder':''}})}}
+            </div>
+            <div class="col-md-6 my-2">
+                    {{form_label(form.apellido_materno,'Apellido Materno:')}}
+                    {{form_widget(form.apellido_materno,{attr: {'placeholder':''}})}}
+            </div> 
+            <div class="col-md-6 my-2">
+                    {{form_label(form.genero,'Género: ')}}
+                    {{form_widget(form.genero,{})}}
+            </div>
+            <div class="col-md-6 my-2">
+                    {{form_label(form.mail,'Email :')}}
+                    {{form_widget(form.mail,{attr: {'class':'form-select form-select-sm', 'aria-label':'.form-select-sm example'}})}}
+            </div>
+            <div class="col-md-6 my-2">
+                    {{form_label(form.departamento,'Departamento: ')}}
+                    {{form_widget(form.departamento,{attr: {'class':'form-select form-select-sm', 'aria-label':'.form-select-sm example'}})}}
+            </div>
+            <div class="col-md-6 my-2">
+                    {{form_label(form.cargo,'Cargo: ')}}
+                    {{form_widget(form.cargo,{})}}
+            </div>
+        
+        </div>
+
+        <div class="row">
+            <div class="col-md-6 my-2">
+                    {{ include('empleado/_form.html.twig') }}
+            </div>
+            <div class="col-md-6 my-2">
+                <a class="btn btn-danger btn-sm btn-block" href="{{ path('app_empleado_index') }}">Regresar</a>
+            </div>    
+        </div>
+    </div>
+{% endblock %}

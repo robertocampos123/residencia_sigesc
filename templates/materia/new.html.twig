@@ -1,0 +1,71 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Asignatura{% endblock %}
+
+{% block body %}
+
+    <div class="container bg-white rounded shadow my-4 p-3">
+        
+        <h5 class="fw-bold text-center text-info py-2">Registrar Asignatura</h5>
+        {{form_start(form)}}
+        <div class="row">
+            <div class="col-md-6 my-2">
+                {{form_label(form.clave_materia,'Clave Materia:')}}
+                {{form_widget(form.clave_materia,{attr: {'placeholder':''}})}}
+            </div>
+            <div class="col-md-6 my-2">
+                {{form_label(form.nombre_materia,'Nombre:')}}
+                {{form_widget(form.nombre_materia,{attr: {'placeholder':'EJ. Cálculo Integral'}})}}
+            </div>
+            <div class="col-md-12 my-2">
+                {{form_label(form.objetivo_materia,'Objetivo Materia:')}}
+                {{form_widget(form.objetivo_materia,{attr: {'placeholder':''}})}}
+            </div>
+            <div class="col-md-12 my-2">
+                {{form_label(form.caracterizacion_materia,'Caracterización:')}}
+                {{form_widget(form.caracterizacion_materia,{attr: {'placeholder':''}})}}
+            </div>
+            <div class="col-md-12 my-2">
+                {{form_label(form.intencion_didactica,'Intención Didáctica:')}}
+                {{form_widget(form.intencion_didactica,{attr: {'placeholder':''}})}}
+            </div>
+            <div class="col-md-4 my-2">
+                {{form_label(form.horas_teoricas,'HT: ')}}
+                {{form_widget(form.horas_teoricas,{attr: {'placeholder':'EJ. 2'}})}}
+            </div>
+            <div class="col-md-4 my-2">
+                {{form_label(form.horas_practicas,'HP: ')}}
+                {{form_widget(form.horas_practicas,{attr: {'placeholder':'EJ. 3'}})}}
+            </div>
+            <div class="col-md-4 my-2">
+                {{form_label(form.creditos,'CR: ')}}
+                {{form_widget(form.creditos,{attr: {'placeholder':'EJ. 5'}})}}
+            </div>
+            <div class="col-md-6 my-2">
+                {{form_label(form.plan_academico,'Plan Académico: ')}}
+                {{form_widget(form.plan_academico,{attr: {'placeholder':''}})}}
+            </div>
+            <div class="col-md-6 my-2">
+                {{form_label(form.semestre,'Semestre: ')}}
+                {{form_widget(form.semestre,{attr: {'placeholder':'EJ. 1'}})}}
+            </div>
+            <div class="col-md-12 my-2">
+                {{form_label(form.carrera,'Carrera: ')}}
+                {{form_widget(form.carrera,{attr: {'placeholder':''}})}}
+            </div>
+            
+        </div>
+
+        <div class="row">
+        <div class="col-md-6 my-2">
+                {{ include('materia/_form.html.twig') }}
+        </div>
+        <div class="col-md-6 my-2">
+               <a class="btn btn-danger btn-sm btn-block" href="{{ path('app_materia_index') }}">Regresar</a>
+        </div>    
+        </div>
+    </div>
+    
+
+   
+{% endblock %}

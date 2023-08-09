@@ -1,0 +1,102 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Tercer Bloque{% endblock %}
+
+{% block body %}
+    <style>
+        @import url(//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css);
+        @import url(https://fonts.googleapis.com/css?family=Titillium+Web:300);
+        .fa-2x {
+            font-size: 2em;
+        }
+        .fa {
+            position: relative;
+            display: table-cell;
+            width: 60px;
+            height: 36px;
+            text-align: center;
+            vertical-align: middle;
+            font-size:30px;
+            color: #F9F6EE;
+        }
+
+        .nav-text {
+            position:relative;
+            display:table-cell;
+            vertical-align:middle;
+            width:190px;
+            font-family: 'Titillium Web', sans-serif; 
+        }
+        .nav-button {
+            position:relative;
+            display:table-cell;
+            vertical-align:middle;
+            font-family: 'Titillium Web', sans-serif;
+        }
+            
+    </style>
+    <nav class="navbar navbar-expand-sm " style="background-color: #4682B4 ">
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link text-white my-1 my-sm-0" href="{{ path('app_clase', {'id': grupo.getId}) }}"><span class="nav-button">Regresar</span></a>
+                </li>
+            </ul>
+            <form class="form-inline mx-0 my-lg-0 mb-5">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link text-white" ><i class="fa fa-user-circle fa-2x" ></i><span class="nav-text">{{user}}</span></a>
+                    </li>
+                    <li class="nav-item active">
+                        <br>
+                    </li>
+                </ul>
+                <a class="nav-link text-white my-1 my-sm-0" href="{{ path('app_logout') }}"><i class="fa fa-sign-out fa-2x" ></i><span class="nav-button">Cerrar Sesión</span></a>
+            </form>
+        </div>
+    </nav>
+
+    <div class="bg-white container w-70  rounded shadow mt-4" >
+            <h5 class="fw-bold text-center text-info py-2">Tercer Seguimiento</h5>
+                <table class="table" style="text-align:center">
+                <thead>
+                 <tr>
+                    <th colspan="2">Unidad</th>
+                    <th colspan="3">Programado</th>
+                    <th colspan="3">Real</th>
+                    <th></th>
+                </tr>
+                <tr>
+                    <th>NO.</th>
+                    <th>Tema</th>
+                    <th>Inicio</th>
+                    <th>Cierre</th>
+                    <th>Evaluación</th>
+                    <th>Inicio</th>
+                    <th>Cierre</th>
+                    <th>Evaluación</th>
+                    <th>Acciones</th>
+                </tr>
+                </thead>
+                <tbody>
+                    {% for seguimientop1 in seguimientos %}
+                        <tr>
+                            <td>{{ seguimientop1.getTema.getNumeroUnidad }}</td>
+                            <td>{{ seguimientop1.getTema.getNombreUnidad }}</td>
+                            <td>{{ seguimientop1.getFechaProgInicio ? seguimientop1.getFechaProgInicio|date('d-m-Y') : '' }}</td>
+                            <td>{{ seguimientop1.getFechaProgFin ? seguimientop1.getFechaProgFin|date('d-m-Y') : '' }}</td>
+                            <td>{{ seguimientop1.getEvaluacionProgramada ? seguimientop1.getEvaluacionProgramada|date('d-m-Y') : '' }}</td>
+                            <td>{{ seguimientop1.getFechaRealInicio ? seguimientop1.getFechaRealInicio|date('d-m-Y') : '' }}</td>
+                            <td>{{ seguimientop1.getFechaRealFin ? seguimientop1.getFechaRealFin|date('d-m-Y') : '' }}</td>
+                            <td>{{ seguimientop1.getEvaluacionReal ? seguimientop1.getEvaluacionReal|date('d-m-Y') : '' }}</td>
+                            <td><a class="btn btn-primary btn-sm" href="{{ path('app_registrar_avance', {'id': seguimientop1.id}) }}">Capturar</a></td>       
+                        </tr>
+                    {% else %}
+                        <tr>
+                            <td colspan="9">Usted no ha realizado el registro de Seguimientos</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+    </div>
+{% endblock %}

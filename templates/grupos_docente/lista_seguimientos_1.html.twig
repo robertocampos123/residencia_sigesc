@@ -1,0 +1,33 @@
+{% extends 'base_dashboard_docente.html.twig' %}
+
+{% block title %}Primer Seguimiento{% endblock %}
+
+{% block main %}
+<div class="bg-white container w-70  rounded shadow mt-4 px-4 py-2">
+    <h5 class="fw-bold text-center text-info py-2">Estadísticas 1er Seguimiento</h5>
+       <table class="table table-md table-bordered table-hover" style="text-align:center">
+        <thead class="thead-light">
+            <tr>
+                <th>Grupo</th>
+                <th>Materia</th>
+                <th>Carrera</th>
+                <th>Resultados</th>
+            </tr>
+        </thead>
+            <tbody>
+            {% for grupo in grupos %}
+                <tr>
+                    <td>{{ grupo.clave_grupo }}</td>
+                    <td>{{ grupo.nombre_materia }}</td>
+                    <td>{{ grupo.nombre_carrera }}</td>
+                    <td style="text-align: center; "><a href="{{ path('app_docente_estadisticas_seg1_grupo', {'id': grupo.id}) }}"><i id="icon" class="fa fa-area-chart fa-lg"></i><span class="nav-text"></span></a></td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="4">Sin registros</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+</div>
+{% endblock %}

@@ -1,0 +1,57 @@
+{% extends 'base_dashboard_docente.html.twig' %}
+
+{% block title %}Reporte Final{% endblock %}
+
+{% block main %}
+<div class="bg-white container w-70  rounded shadow mt-4 px-4 py-2">
+
+    <h5 class="fw-bold text-center text-info py-2">Resumen Final del Semestre</h5>
+       <table class="table table-md table-bordered table-hover" style="text-align:center">
+        <thead class="thead-light">
+            <tr>
+                <th>Grupo</th>
+                <th>Materia</th>
+                <th>Carrera</th>
+                <th>Inscritos</th>
+                <th>Acreditados</th>
+                <th>No acreditados</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for grupo in grupos %}
+            <tr>
+                <td>{{ grupo.clave_grupo }}</td>
+                <td>{{ grupo.nombre_materia }}</td>
+                <td>{{ grupo.nombre_carrera }}</td>
+                <td>{{ grupo.inscritos }}</td>
+                <td>{{ grupo.ac_ordinario + grupo.ac_regularizacion + grupo.ac_extraordinario}}</td>
+                <td>{{ grupo.no_acreditado }}</td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">Sin registros</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+     {% if grupos %}
+    <div class="bg-transparent container w-70%   d-flex flex-row justify-content-center">      
+        <div class="card" style="mt-5 display: inline-block; margin:1%;">
+              <div class="card-body">
+                <ul class="list-group" style=" text-align: center;">
+                  <li class="list-group-item list-group-item-info">Reporte Final</li>
+                  <li class="list-group-item"><a href="{{ path('app_archivo_reporte_final') }}"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/PDF_file_icon.svg/1667px-PDF_file_icon.svg.png" style="width:65px;height:78px;margin-left: auto;margin-right: auto;display: block;"></a></li>
+                </ul>
+                <ul class="list-group" style=" text-align: center;">
+                    <form action="/reporte_final/guardar" method="POST" enctype="multipart/form-data">
+                    <input type="radio" id="aprobado" name="aprobado" value="" required >
+                    <label for="aprobado">Afirmo que el presente contiene datos verídicos</label><br><br>
+                    <input  type="submit" value="Entregar">
+                    </form>
+                </ul>
+              </div>
+        </div>
+    </div>
+     {% endif %}
+</div>
+{% endblock %}

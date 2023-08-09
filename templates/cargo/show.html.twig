@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Cargo{% endblock %}
+
+{% block body %}
+    <h1>Cargo</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ cargo.id }}</td>
+            </tr>
+            <tr>
+                <th>Clave_cargo</th>
+                <td>{{ cargo.claveCargo }}</td>
+            </tr>
+            <tr>
+                <th>Nombre_cargo</th>
+                <td>{{ cargo.nombreCargo }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_cargo_index') }}">back to list</a>
+
+    <a href="{{ path('app_cargo_edit', {'id': cargo.id}) }}">edit</a>
+
+    {{ include('cargo/_delete_form.html.twig') }}
+{% endblock %}

@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Carrera{% endblock %}
+
+{% block body %}
+
+    <div class="container bg-white rounded shadow my-4 p-3">
+        
+        <h5 class="fw-bold text-center text-info py-2">Editar Carrera</h5>
+        {{form_start(form)}}
+        <div class="row">
+            <div class="col-md-12 my-2">
+                {{form_label(form.clave_carrera,'Clave Carrera:')}}
+                {{form_widget(form.clave_carrera,{attr: {'placeholder':'ISIC'}})}}
+            </div>
+            <div class="col-md-12 my-2">
+                {{form_label(form.nombre_carrera,'Nombre Carrera:')}}
+                {{form_widget(form.nombre_carrera,{attr: {'placeholder':''}})}}
+            </div>
+            <div class="col-md-12 my-2">
+                {{form_label(form.departamento,'Seleccione el Departamento')}}
+                {{form_widget(form.departamento)}}
+            </div>
+        </div>
+
+        <div class="row">
+        <div class="col-md-6 my-2">
+                {{ include('carrera/_form.html.twig', {'button_label': 'Actualizar'}) }}
+        </div>
+        <div class="col-md-6 my-2">
+               <a class="btn btn-danger btn-sm btn-block" href="{{ path('app_carrera_index') }}">Regresar</a>
+        </div>    
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Carrera{% endblock %}
+
+{% block body %}
+    <h1>Carrera</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ carrera.id }}</td>
+            </tr>
+            <tr>
+                <th>Clave_carrera</th>
+                <td>{{ carrera.claveCarrera }}</td>
+            </tr>
+            <tr>
+                <th>Nombre_carrera</th>
+                <td>{{ carrera.nombreCarrera }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_carrera_index') }}">back to list</a>
+
+    <a href="{{ path('app_carrera_edit', {'id': carrera.id}) }}">edit</a>
+
+    {{ include('carrera/_delete_form.html.twig') }}
+{% endblock %}
